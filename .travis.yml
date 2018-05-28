@@ -7,4 +7,4 @@ test:
   username: travis
   encoding: utf8
 before_install:
-  - mysql -e 'CREATE DATABASE budgtDevelopment;'
+  - mysql -e 'CREATE DATABASE budgtDevelopment; update user set authentication_string=PASSWORD('password') where User='travis'; FLUSH PRIVILEGES;'
