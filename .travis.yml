@@ -1,2 +1,10 @@
 language: java
 jdk: oraclejdk8
+services:
+  - mysql
+test:
+  database: budgtDevelopment
+  username: travis
+  encoding: utf8
+before_install:
+  - mysql -e 'CREATE DATABASE budgtDevelopment;'
