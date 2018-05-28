@@ -2,3 +2,7 @@ language: java
 jdk: oraclejdk8
 services:
   - mysql
+test:
+  database: budgtDevelopment
+  username: budgt
+  encoding: utf8
