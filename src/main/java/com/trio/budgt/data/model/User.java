@@ -1,4 +1,4 @@
-package com.trio.budgt.model;
+package com.trio.budgt.data.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
