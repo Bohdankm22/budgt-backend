@@ -25,10 +25,14 @@ public class User implements Serializable {
     @Column(nullable = false, updatable = false)
     private String password;
 
-    @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
+    @Column(name = "createdAt", nullable = false)
     private Date createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+    }
 
     public Long getId() {
         return id;
