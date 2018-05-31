@@ -24,7 +24,6 @@ public class UserController {
     // Get a Single User
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable(value = "id") Long userId) {
-        log.info(String.format("Getting user with id %d", userId));
         return userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
     }
