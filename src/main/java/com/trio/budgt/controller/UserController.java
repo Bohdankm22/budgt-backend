@@ -12,8 +12,12 @@ import javax.validation.Valid;
 @RequestMapping("/api/v1")
 public class UserController {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     // Create a new User
     @PostMapping("/users")
