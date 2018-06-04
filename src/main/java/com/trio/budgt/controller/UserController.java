@@ -13,6 +13,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
+
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final UserRepository userRepository;
 
@@ -24,6 +25,7 @@ public class UserController {
     // Get a Single User
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable(value = "id") Long userId) {
+        log.info(String.format("Getting user with id %d", userId));
         return userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
     }
