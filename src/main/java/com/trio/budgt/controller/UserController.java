@@ -22,12 +22,6 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    // Create a new User
-    @PostMapping("/users")
-    public User createUser(@Valid @RequestBody User user) {
-        return userRepository.save(user);
-    }
-
     // Get a Single User
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable(value = "id") Long userId) {
