@@ -6,24 +6,31 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt"},
         allowGetters = true)
 public class User implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, unique = true, length = 64)
     private String email;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "role_user",
+            joinColumns = {@JoinColumn(name = "role_id")},
+            inverseJoinColumns = {@JoinColumn(name = "id")})
+    private Collection<Role> roles;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdAt", nullable = false)
@@ -34,12 +41,16 @@ public class User implements Serializable {
         createdAt = new Date();
     }
 
-    public Long getId() {
-        return id;
+    protected User() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public User(String emai) {
+        this.email = email;
+    }
+
+    public User(String name, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getEmail() {
@@ -50,6 +61,22 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -57,7 +84,6 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -66,3 +92,4 @@ public class User implements Serializable {
         this.createdAt = createdAt;
     }
 }
+
