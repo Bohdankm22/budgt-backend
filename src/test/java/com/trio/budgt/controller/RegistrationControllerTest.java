@@ -32,7 +32,7 @@ public class RegistrationControllerTest {
     @Test
     public void rootController() throws Exception {
         mockMvc.perform(
-                post("/auth/register")
+                post("/api/v1/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createUserInJson("mike@example.com", "123")))
                 .andExpect(status().isOk());
