@@ -1,4 +1,4 @@
-package com.trio.budgt.auth;
+package com.trio.budgt.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
