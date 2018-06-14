@@ -1,6 +1,6 @@
 package com.trio.budgt.controller;
 
-import com.trio.budgt.WebApplication;
+import com.trio.budgt.BudgtApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WebApplication.class)
+@SpringBootTest(classes = BudgtApplication.class)
 public class RegistrationControllerTest {
 
     private MockMvc mockMvc;

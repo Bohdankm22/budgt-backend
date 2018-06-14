@@ -31,13 +31,13 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     @ResponseBody
     public User add(@RequestBody @Validated User user) {
         return userService.save(user);
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @PostMapping("/login")
     public String login(@RequestBody User request) throws Exception{
         User user = userService.findByEmail(request.getEmail());
         if (user == null) {

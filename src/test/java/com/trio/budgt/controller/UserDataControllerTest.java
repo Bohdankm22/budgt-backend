@@ -1,7 +1,7 @@
 package com.trio.budgt.controller;
 
 
-import com.trio.budgt.WebApplication;
+import com.trio.budgt.BudgtApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,12 +12,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WebApplication.class)
+@SpringBootTest(classes = BudgtApplication.class)
 @WebAppConfiguration
 public class UserDataControllerTest {
 

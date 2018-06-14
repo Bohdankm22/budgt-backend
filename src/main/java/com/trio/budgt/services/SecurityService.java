@@ -1,5 +1,9 @@
 package com.trio.budgt.services;
 
-public interface SecurityService {
+import com.trio.budgt.data.model.User;
 
+public interface SecurityService {
+    User getPrincipal();
+
+    boolean hasRole(String... roles);
 }
