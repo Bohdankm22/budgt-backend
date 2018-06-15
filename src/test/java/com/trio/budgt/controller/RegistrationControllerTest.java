@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -18,7 +17,6 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BudgtApplication.class)
-@WebAppConfiguration
 public class RegistrationControllerTest {
 
     private MockMvc mockMvc;
@@ -34,7 +32,7 @@ public class RegistrationControllerTest {
     @Test
     public void rootController() throws Exception {
         mockMvc.perform(
-                post("/auth/register")
+                post("/api/v1/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(createUserInJson("mike@example.com", "123")))
                 .andExpect(status().isOk());
